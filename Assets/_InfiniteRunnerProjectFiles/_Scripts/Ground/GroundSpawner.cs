@@ -25,7 +25,7 @@ public class GroundSpawner : MonoBehaviour
         else
         {
             // recursive case (split left and right halves until they are 1 element each)
-            var mid = (high-low) / 2;
+            var mid = (high+low) / 2;
             var l = selectGroundObject(G, low, mid);
             var r = selectGroundObject(G, mid + 1, high);
             // calculate the probablility that l should be picked
@@ -45,7 +45,7 @@ public class GroundSpawner : MonoBehaviour
             // recursive case (split left and right halves until they are 1 element each)
             // left half is calculated in a separate thread
             GroundObject l = null;
-            var mid = (high-low) / 2;
+            var mid = (high+low) / 2;
             var tL = new Thread(new ThreadStart(() => {
                 l = selectGroundObjectAsync(G, low, mid);
             }));
